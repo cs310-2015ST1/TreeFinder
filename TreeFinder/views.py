@@ -1,6 +1,9 @@
 from django.shortcuts import render, HttpResponse
+from .models import Tree
 
 # Create your views here.
 
 def treefinder(request):
-    return HttpResponse("Welcome to treefinder, where the trees are plenty!")
+    treelist = Tree.objects.order_by("species")
+    #return HttpResponse("Welcome to treefinder, where the trees are plenty!")
+    return render(request, 'TreeFinder/base.html', {'Trees': treelist})

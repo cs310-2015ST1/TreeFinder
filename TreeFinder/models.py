@@ -17,7 +17,7 @@ class Location(models.Model):
 
 class Tree(models.Model):
     species = models.CharField(max_length=200)
-    location = models.ForeignKey(Location)
+    #location = models.ForeignKey(Location)
 
 class TreeData(models.Model):
     file = models.FileField(verbose_name='Filename', storage=fss, default='xml data file')
@@ -27,7 +27,7 @@ class TreeData(models.Model):
     def parseIntoModel(self, xml_file):
         root = ElementTree.fromstring(xml_file.read())
         for species in root.iter(XML_SPECIES):
-            self.allSpecies.append(species)
+                self.allSpecies.append(species)
         print("TOTAL NUMBER OF SPECIES ENTRIES = " + str(len(self.allSpecies)))
 
     def save(self, *args, **kwargs):
