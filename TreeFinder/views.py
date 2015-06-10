@@ -4,3 +4,4 @@ from django.shortcuts import render, HttpResponse
 
 def treefinder(request):
     return HttpResponse("Welcome to treefinder, where the trees are plenty!")
+

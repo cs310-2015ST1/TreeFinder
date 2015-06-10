@@ -27,7 +27,10 @@ class TreeData(models.Model):
     def parseIntoModel(self, xml_file):
         root = ElementTree.fromstring(xml_file.read())
         for species in root.iter(XML_SPECIES):
-            self.allSpecies.append(species)
+            if not species.text in self.allSpecies:
+                self.allSpecies.append(species.text)
+                print("Species: " + str(species.text))
+
         print("TOTAL NUMBER OF SPECIES ENTRIES = " + str(len(self.allSpecies)))
 
     def save(self, *args, **kwargs):
