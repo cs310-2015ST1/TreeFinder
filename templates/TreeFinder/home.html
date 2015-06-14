@@ -1,0 +1,46 @@
+{% extends 'TreeFinder/base.html' %}
+
+{% block content %}
+<!-- TUTORIAL CODE: MODIFIED-->
+    <div id="map" style="width: 500px; height: 400px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['Vancouver', 49.27, -123.12, 4],
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(49.27, -123.12),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+
+
+
+    <p> The List of trees:</p>
+    <ul>
+        {% for TreeMumboJumbo in Trees %}
+            <li> {{ TreeMumboJumbo.species }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

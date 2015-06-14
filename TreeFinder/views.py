@@ -6,4 +6,4 @@ from .models import Tree
 def treefinder(request):
     treelist = Tree.objects.order_by("species")
     #return HttpResponse("Welcome to treefinder, where the trees are plenty!")
-    return render(request, 'TreeFinder/base.html', {'Trees': treelist})
+    return render(request, 'TreeFinder/home.html', {'Trees': treelist})
