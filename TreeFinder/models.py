@@ -17,18 +17,28 @@ class Location(models.Model):
 
 class Tree(models.Model):
     species = models.CharField(max_length=200)
-    #location = models.ForeignKey(Location)
+    neighbourhoodName = models.CharField(max_length=200, default='UNSPECIFIED')
+    cell = models.IntegerField(default=0)
+    onStreet = models.CharField(max_length=200, default='UNSPECIFIED')
+    onStreetBlock = models.IntegerField(default=0)
+    heightRangeID = models.IntegerField(default=0)
+    # location = models.ForeignKey(Location)
 
 class TreeData(models.Model):
     file = models.FileField(verbose_name='Filename', storage=fss, default='xml data file')
     uploadedFile = None
-    allSpecies = []
 
     def parseIntoModel(self, xml_file):
         root = ElementTree.fromstring(xml_file.read())
-        for species in root.iter(XML_SPECIES):
-                self.allSpecies.append(species)
-        print("TOTAL NUMBER OF SPECIES ENTRIES = " + str(len(self.allSpecies)))
+        for streetTree in root.iter("StreetTree"): # StreetTree is the name in the XML file
+            # Construct a new Tree entry in our models for each StreetTree in the file
+            t = (Tree(species=streetTree.find('SpeciesName').text,
+                      neighbourhoodName = streetTree.find('NeighbourhoodName').text,
+                      cell = streetTree.find('Cell').text,
+                      onStreet = streetTree.find('OnStreet').text,
+                      onStreetBlock = streetTree.find('OnStreetBlock').text,
+                      heightRangeID = streetTree.find('HeightRangeID').text))
+            t.save()
 
     def save(self, *args, **kwargs):
         super(TreeData, self).save(*args, **kwargs)
