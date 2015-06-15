@@ -35,20 +35,13 @@ class TreeData(models.Model):
         for streetTree in root.iter("StreetTree"):  # StreetTree is the name in the XML file
             # Construct a new Tree entry in our models for each StreetTree in the file
             t = (Tree(species=streetTree.find('SpeciesName').text,
-<<<<<<< Updated upstream
                       neighbourhoodName = streetTree.find('NeighbourhoodName').text,
                       cell = streetTree.find('Cell').text,
                       onStreet = streetTree.find('OnStreet').text,
                       onStreetBlock = streetTree.find('OnStreetBlock').text,
                       heightRangeID = streetTree.find('HeightRangeID').text,
                       civicNumber = streetTree.find('CivicNumber').text))
-=======
-                      neighbourhoodName=streetTree.find('NeighbourhoodName').text,
-                      cell=streetTree.find('Cell').text,
-                      onStreet=streetTree.find('OnStreet').text,
-                      onStreetBlock=streetTree.find('OnStreetBlock').text,
-                      heightRangeID=streetTree.find('HeightRangeID').text))
->>>>>>> Stashed changes
+
             t.save()
 
     def save(self, *args, **kwargs):
