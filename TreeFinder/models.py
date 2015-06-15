@@ -6,7 +6,6 @@ from xml.etree import ElementTree
 
 UPLOAD_DIRECTORY = '/uploaded_files/'
 FULL_UPLOAD_PATH = settings.BASE_DIR + UPLOAD_DIRECTORY
-XML_SPECIES = 'SpeciesName'
 
 fss = FileSystemStorage(location=FULL_UPLOAD_PATH)
 
@@ -22,6 +21,7 @@ class Tree(models.Model):
     onStreet = models.CharField(max_length=200, default='UNSPECIFIED')
     onStreetBlock = models.IntegerField(default=0)
     heightRangeID = models.IntegerField(default=0)
+    civicNumber = models.IntegerField(default=0)
     # location = models.ForeignKey(Location)
 
 class TreeData(models.Model):
@@ -37,7 +37,8 @@ class TreeData(models.Model):
                       cell = streetTree.find('Cell').text,
                       onStreet = streetTree.find('OnStreet').text,
                       onStreetBlock = streetTree.find('OnStreetBlock').text,
-                      heightRangeID = streetTree.find('HeightRangeID').text))
+                      heightRangeID = streetTree.find('HeightRangeID').text,
+                      civicNumber = streetTree.find('CivicNumber').text))
             t.save()
 
     def save(self, *args, **kwargs):

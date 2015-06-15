@@ -3,10 +3,8 @@ from TreeFinder.models import Tree, TreeData
 
 # Register your models here.
 
-# Register your models here.
-
 class TreeAdmin(admin.ModelAdmin):
-    list_display = ('species',)
+    list_display = ('species', 'neighbourhoodName', 'onStreet', 'onStreetBlock', 'heightRangeID', 'civicNumber')
 
 class TreeDataAdmin(admin.ModelAdmin):
     list_display = ('file',)

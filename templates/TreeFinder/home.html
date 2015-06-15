@@ -8,42 +8,50 @@
 
   <script type="text/javascript">
 
-            var geocoder = new google.maps.Geocoder();
-            var address = "Vancouver, Canada";
+      var geocoder = new google.maps.Geocoder();
+      var homeAddress = "Vancouver, Canada";
+      var map;
 
-    geocoder.geocode( { 'address': address}, function(results, status) {
+      var myOptions = {
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false
+      };
 
+    geocoder.geocode( { 'address': homeAddress}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latitude = results[0].geometry.location.lat();
         var longitude = results[0].geometry.location.lng();
+        myOptions.center = new google.maps.LatLng(latitude,longitude);
 
-
-        initialize(latitude,longitude);
-
-                }
-
-        });
-
+          map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      }
+    });
 
     function initialize(latitude,longitude) {
         var latlng = new google.maps.LatLng(latitude,longitude);
-
-        var myOptions = {
-          zoom: 14,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          mapTypeControl: false
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
         var marker = new google.maps.Marker({
           position: latlng,
           map: map,
             title:"location : Dublin"
         });
+    }
+      var treesListJson = '{{ Trees|safe }}';
+      var aFewTrees = JSON.parse(treesListJson);
+
+  for (i=0; i<aFewTrees.length; i++) {
+      var tree = aFewTrees[i].fields;
+      var treeAddress = tree.civicNumber.toString() + " " + tree.onStreet.toString() + ", Vancouver, Canada";
+      console.log(treeAddress);
+      geocoder.geocode( { 'address': treeAddress}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+
+            initialize(latitude,longitude);
       }
-
-
+    });
+  }
 </script>
 
      <div id="map_canvas" style="width:710px; height:300px"></div>
