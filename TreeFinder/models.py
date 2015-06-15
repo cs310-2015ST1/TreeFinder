@@ -58,6 +58,7 @@ class TreeData(models.Model):
 class FilterRequestObject(models.Model):
 
     filteredList = []
+    filteredListSize = len(filteredList)
 
     CivicNumber = models.IntegerField(default = 0)
     OnStreet = models.CharField(max_length=200, default='UNSPECIFIED')
