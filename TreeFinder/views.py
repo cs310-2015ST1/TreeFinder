@@ -18,6 +18,7 @@ def treefinder(request):
 
 
 def filter(request):
+    print("SOOOO MANY TIMES")
     # Get the context from the request.
     context = RequestContext(request)
 
@@ -26,7 +27,7 @@ def filter(request):
         #if we have a valid form, then save it to the db
         if form.is_valid():
             form.save(commit=True)
-            return treefinder(request)
+            return render(request, 'TreeFinder/home.html')
         else:
             print(form.errors)
     else:

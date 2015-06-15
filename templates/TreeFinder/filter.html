@@ -4,7 +4,17 @@
 {% extends 'TreeFinder/base.html' %}
 
 {% block content %}
-    <h1>adfadfgsdfgsdfgadfgadfg</h1>
 
+        <form id="filter_form" method="post" action="/filter/">
+
+     {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Create Tree" />
+        </form>
 
 {% endblock %}

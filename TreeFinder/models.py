@@ -74,11 +74,12 @@ class FilterRequestObject(models.Model):
             pass
 
     # returns a boolean telling us if Tree meets search criteria
-    def filterLogic(self):
+    def filterLogicHandler(self, t):
         pass
 
     def save(self, *args, **kwargs):
         super(FilterRequestObject, self).save(*args, **kwargs)
+
 
     def __str__(self):              # __unicode__ on Python 2
         return self.name
