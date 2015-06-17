@@ -1,18 +1,21 @@
-from django.forms import ModelForm, Form
+from django.forms import ModelForm
 from TreeFinder.models import FilterRequestObject
+
+SPECIES_CHOICES = (
+    ('SERRULATA', 'SERRULATA'),
+    ('CONIFER', 'REDWOOD')
+)
 
 
 ### filtering form code
 class FilterRequestObjectForm(ModelForm):
-    # CivicNumber = form
-    # OnStreet =
+    #CivicNumber = forms.ChoiceField()
+    #OnStreet =
     # HeightRangeID =
     # Diameter =
     # GenusName =
-    # SpeciesName =
+    #SpeciesName = forms.ChoiceField(label = "Species", choices = SPECIES_CHOICES)
     # CommonName =
     class Meta:
-        model = FilterRequestObject
-        fields = '__all__'
-
-
+         model = FilterRequestObject
+         fields = ['SpeciesName']

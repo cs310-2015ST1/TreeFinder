@@ -57,30 +57,28 @@ class TreeData(models.Model):
 
 class FilterRequestObject(models.Model):
 
-    filteredList = []
-    filteredListSize = len(filteredList)
-
+    filter = models.ForeignKey('Tree', blank = True, null = True, unique = False)
+    SpeciesName = models.CharField(max_length=200, default='UNSPECIFIED')
     CivicNumber = models.IntegerField(default = 0)
     OnStreet = models.CharField(max_length=200, default='UNSPECIFIED')
     HeightRangeID = models.IntegerField(default = 0)
     Diameter = models.IntegerField(default = 0)
     GenusName = models.CharField(max_length=200, default='UNSPECIFIED')
-    SpeciesName = models.CharField(max_length=200, default='UNSPECIFIED')
     CommonName = models.CharField(max_length=200, default='UNSPECIFIED')
 
      # populates filteredlist with Trees meeting filterlogic criteria
     def populateFilteredList(self):
-        for t in Tree.objects.all():
-            #if filterlogic True:
-            pass
+        species = self.SpeciesName
+        t = Tree.objects.all()
+        filtered_trees = t.filter(species__exact = species)
+        for t in filtered_trees:
+            print(t.species)
+        filter = filtered_trees
 
-    # returns a boolean telling us if Tree meets search criteria
-    def filterLogicHandler(self, t):
-        pass
 
     def save(self, *args, **kwargs):
+        self.populateFilteredList()
         super(FilterRequestObject, self).save(*args, **kwargs)
-
 
     def __str__(self):              # __unicode__ on Python 2
         return self.name
