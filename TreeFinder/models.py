@@ -34,7 +34,7 @@ class TreeData(models.Model):
         root = ElementTree.fromstring(xml_file.read())
         for streetTree in root.iter("StreetTree"):  # StreetTree is the name in the XML file
             # Construct a new Tree entry in our models for each StreetTree in the file
-            t = (Tree(species=streetTree.find('SpeciesName').text,
+            t = (Tree(species=streetTree.find('CommonName').text,
                       neighbourhoodName = streetTree.find('NeighbourhoodName').text,
                       cell = streetTree.find('Cell').text,
                       onStreet = streetTree.find('OnStreet').text,
@@ -58,19 +58,21 @@ class TreeData(models.Model):
 class FilterRequestObject(models.Model):
 
     filter = models.ForeignKey('Tree', blank = True, null = True, unique = False)
-    SpeciesName = models.CharField(max_length=200, default='UNSPECIFIED')
-    CivicNumber = models.IntegerField(default = 0)
-    OnStreet = models.CharField(max_length=200, default='UNSPECIFIED')
-    HeightRangeID = models.IntegerField(default = 0)
-    Diameter = models.IntegerField(default = 0)
-    GenusName = models.CharField(max_length=200, default='UNSPECIFIED')
-    CommonName = models.CharField(max_length=200, default='UNSPECIFIED')
+    Neighbourhood = models.CharField(max_length=200, default='UNSPECIFIED')
+    Street = models.CharField(max_length=200, default='UNSPECIFIED')
+    HeightMin = models.IntegerField(default = 0)
+    Species = models.CharField(max_length=200, default='UNSPECIFIED')
 
      # populates filteredlist with Trees meeting filterlogic criteria
     def populateFilteredList(self):
-        species = self.SpeciesName
+        name = self.Species
+        neighborhood = self.Neighbourhood
+        maxheight = self.HeightMin
+
+        if name == 'UNSPECIFIED' and neighborhood == 'UNSPECIFIED' and maxheight == 0:
+
         t = Tree.objects.all()
-        filtered_trees = t.filter(species__exact = species)
+        filtered_trees = t.filter(species__exact = name)
         for t in filtered_trees:
             print(t.species)
         filter = filtered_trees

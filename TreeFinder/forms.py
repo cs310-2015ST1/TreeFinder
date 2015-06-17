@@ -18,4 +18,4 @@ class FilterRequestObjectForm(ModelForm):
     # CommonName =
     class Meta:
          model = FilterRequestObject
-         fields = ['SpeciesName']
+         fields = ['Neighborhood', 'Street', 'HeightMin', 'CommonName']
