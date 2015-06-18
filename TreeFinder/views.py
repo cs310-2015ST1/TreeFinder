@@ -32,8 +32,6 @@ def filter(request):
     else:
         # If the request was not a POST, display the form
         form = FilterRequestObjectForm()
-
-    # Bad form (or form details), no form supplied...
-    # Render the form with error messages (if any).
+    # Render the form
     return render_to_response('TreeFinder/home.html', {'form': form}, context)
 
