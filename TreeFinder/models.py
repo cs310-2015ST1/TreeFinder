@@ -65,17 +65,32 @@ class FilterRequestObject(models.Model):
 
      # populates filteredlist with Trees meeting filterlogic criteria
     def populateFilteredList(self):
-        name = self.Species
-        neighborhood = self.Neighbourhood
-        maxheight = self.HeightMin
 
-        if name == 'UNSPECIFIED' and neighborhood == 'UNSPECIFIED' and maxheight == 0:
+        name = self.Species
+        addr = self.Street
+        neighborhood = self.Neighbourhood
+        height = self.HeightMin
+
+        kwargDict = {
+            'neighbourhoodName__iexact' : neighborhood ,
+            'onStreet__iexact': addr,
+            'heightrangeid__range': (height, 10),
+            'species__iexact': name
+        }
+
+        if neighborhood == 'UNSPECIFIED':
+            del kwargDict['neighbourhoodName__iexact']
+        if addr == 'UNSPECIFIED':
+            del kwargDict['onStreet__iexact']
+        if maxheight == 0:
+            del kwargDict['heightrangeid__range']
+        if name == 'UNSPECIFIED':
+            del kwargDict['species__iexact']
 
         t = Tree.objects.all()
-        filtered_trees = t.filter(species__exact = name)
-        for t in filtered_trees:
-            print(t.species)
-        filter = filtered_trees
+
+        filter = t.filter()
+
 
 
     def save(self, *args, **kwargs):

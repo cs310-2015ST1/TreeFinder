@@ -14,8 +14,8 @@ class FilterRequestObjectForm(ModelForm):
     # HeightRangeID =
     # Diameter =
     # GenusName =
-    #SpeciesName = forms.ChoiceField(label = "Species", choices = SPECIES_CHOICES)
+    SpeciesName = forms.ChoiceField(label = "Species", choices = SPECIES_CHOICES)
     # CommonName =
     class Meta:
          model = FilterRequestObject
-         fields = ['Neighborhood', 'Street', 'HeightMin', 'CommonName']
+         fields = ['Neighborhood', 'Street', 'HeightMin', 'Species']

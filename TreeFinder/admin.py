@@ -10,7 +10,7 @@ class TreeDataAdmin(admin.ModelAdmin):
     list_display = ('file',)
 
 class FilterRequestObjectAdmin(admin.ModelAdmin):
-    list_display = ('SpeciesName','GenusName','CommonName', 'Diameter', 'OnStreet', 'HeightRangeID', 'CivicNumber')
+    list_display = ('Neighbourhood', 'Street', 'HeightMin', 'Species')
 
 admin.site.register(Tree, TreeAdmin)
 admin.site.register(TreeData, TreeDataAdmin)

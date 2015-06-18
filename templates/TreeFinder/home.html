@@ -53,4 +53,14 @@
   }
 </script>
 
+    {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Create Tree" />
+        </form>
+
 {% endblock %}
