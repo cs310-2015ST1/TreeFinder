@@ -24,6 +24,8 @@ class Tree(models.Model):
     heightRangeID = models.IntegerField(default=0)
     civicNumber = models.IntegerField(default=0)
     # location = models.ForeignKey(Location)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.species
 
 
 class TreeData(models.Model):
