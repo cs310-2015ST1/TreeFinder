@@ -18,7 +18,6 @@ def treefinder(request):
 
 
 def filter(request):
-    print("SOOOO MANY TIMES")
     # Get the context from the request.
     context = RequestContext(request)
 
