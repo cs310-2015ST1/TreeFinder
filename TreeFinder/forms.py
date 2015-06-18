@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from TreeFinder.models import FilterRequestObject
 
 SPECIES_CHOICES = (
-    ('SERRULATA', 'SERRULATA'),
+    ('NORWAY MAPLE', 'NORWAY MAPLE'),
     ('CONIFER', 'REDWOOD')
 )
 

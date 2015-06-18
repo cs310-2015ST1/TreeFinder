@@ -74,7 +74,7 @@ class FilterRequestObject(models.Model):
         kwargDict = {
             'neighbourhoodName__iexact' : neighborhood ,
             'onStreet__iexact': addr,
-            'heightrangeid__range': (height, 10),
+            'heightRangeID__range': (height, 10),
             'species__iexact': name
         }
 
@@ -83,15 +83,15 @@ class FilterRequestObject(models.Model):
         if addr == 'UNSPECIFIED':
             del kwargDict['onStreet__iexact']
         if height == 0:
-            del kwargDict['heightrangeid__range']
+            del kwargDict['heightRangeID__range']
         if name == 'UNSPECIFIED':
             del kwargDict['species__iexact']
 
         t = Tree.objects.all()
 
-        filter = t.filter(kwargDict)
-        for t in filter:
-            print(t.species)
+        filter = t.filter(**kwargDict)
+        for tree in filter:
+            print(tree.species + tree.neighbourhoodName + tree.heightRangeID.__str__())
 
 
 

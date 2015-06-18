@@ -53,6 +53,8 @@
   }
 </script>
 
+      <form id="filter_form" method="post" action="/filter/">
+
     {% csrf_token %}
             {% for field in form.visible_fields %}
                 {{ field.errors }}
@@ -60,7 +62,7 @@
                 {{ field }}
             {% endfor %}
 
-            <input type="submit" name="submit" value="Create Tree" />
+            <input type="submit" name="submit" value="Find Trees" />
         </form>
 
 {% endblock %}
