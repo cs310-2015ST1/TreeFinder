@@ -23,6 +23,8 @@ class Tree(models.Model):
     onStreetBlock = models.IntegerField(default=0)
     heightRangeID = models.IntegerField(default=0)
     civicNumber = models.IntegerField(default=0)
+    x_coordinate = models.FloatField(default=0.0)
+    y_coordinate = models.FloatField(default=0.0)
     # location = models.ForeignKey(Location)
     def __str__(self):              # __unicode__ on Python 2
         return self.species
@@ -34,17 +36,33 @@ class TreeData(models.Model):
 
     def parseIntoModel(self, xml_file):
         root = ElementTree.fromstring(xml_file.read())
-        for streetTree in root.iter("StreetTree"):  # StreetTree is the name in the XML file
-            # Construct a new Tree entry in our models for each StreetTree in the file
-            t = (Tree(species=streetTree.find('CommonName').text,
+        for streetTree in root.iter("StreetTree"):
+            onStreet = streetTree.find('OnStreet').text
+            civicNumber = streetTree.find('CivicNumber').text
+            address = str(civicNumber) + " " + onStreet + ", Vancouver, Canada"
+            print("STARTING LOOKUP")
+            print(address)
+            try:
+                addressMap = AddressMapping.objects.get(address=address)
+                # print("COORDINATES: ")
+
+                t = (Tree(species=streetTree.find('CommonName').text,
                       neighbourhoodName = streetTree.find('NeighbourhoodName').text,
                       cell = streetTree.find('Cell').text,
-                      onStreet = streetTree.find('OnStreet').text,
+                      onStreet = onStreet,
                       onStreetBlock = streetTree.find('OnStreetBlock').text,
                       heightRangeID = streetTree.find('HeightRangeID').text,
-                      civicNumber = streetTree.find('CivicNumber').text))
+                      civicNumber = civicNumber,
+                      x_coordinate = addressMap.x_coordinate,
+                      y_coordinate = addressMap.y_coordinate
+                 ))
+                t.save()
 
-            t.save()
+            except AddressMapping.DoesNotExist:
+                print("MAPPING FAILURE")
+            # print(AddressMapping.objects.all()[0])
+            # print(address)
+
 
     def save(self, *args, **kwargs):
         super(TreeData, self).save(*args, **kwargs)
@@ -89,12 +107,41 @@ class FilterRequestObject(models.Model):
         if name == 'UNSPECIFIED':
             del kwargDict['species__iexact']
 
+        t = Tree.objects.all()
+
+        filter = t.filter(**kwargDict)
+        for tree in filter:
+            print(tree.species + tree.neighbourhoodName + tree.heightRangeID.__str__())
+
+
+
     def save(self, *args, **kwargs):
         self.populateFilteredList()
         super(FilterRequestObject, self).save(*args, **kwargs)
 
     def __str__(self):              # __unicode__ on Python 2
         return self.name
+
+
+class FilteredTree(models.Model):
+    species = models.CharField(max_length=200)
+    neighbourhoodName = models.CharField(max_length=200, default='UNSPECIFIED')
+    cell = models.IntegerField(default=0)
+    onStreet = models.CharField(max_length=200, default='UNSPECIFIED')
+    onStreetBlock = models.IntegerField(default=0)
+    heightRangeID = models.IntegerField(default=0)
+    civicNumber = models.IntegerField(default=0)
+    # location = models.ForeignKey(Location)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.species
+
+class AddressMapping(models.Model):
+    address = models.CharField(max_length=300)
+    x_coordinate = models.FloatField(default=0.0)
+    y_coordinate = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return self.address
 
 
 

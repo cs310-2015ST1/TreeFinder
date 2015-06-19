@@ -11,9 +11,10 @@ from TreeFinder.forms import FilterRequestObjectForm
 # Create your views here.
 
 def treefinder(request):
-    treelist = Tree.objects.order_by("species")[:10]
+    context = RequestContext(request)
+    treelist = Tree.objects.order_by("species")
     treelistJson = serializers.serialize("json", treelist)
-    return render(request, 'TreeFinder/home.html', {'Trees': treelistJson})
+    return render(request, 'TreeFinder/ahome.html', context)
 
 
 def filter(request):
@@ -25,7 +26,7 @@ def filter(request):
         #if we have a valid form, then save it to the db
         if form.is_valid():
             form.save(commit=True)
-            f = FilterRequestObject.objects.all()[0]
+            f = FilterRequestObject.objects.all()[len(FilterRequestObject.objects.all()) - 1]
 
             neighborhood = f.Neighbourhood
             addr = f.Street
@@ -49,16 +50,17 @@ def filter(request):
                 del kwargDict['species__iexact']
 
             t = Tree.objects.all().filter(**kwargDict)
+            tJson = serializers.serialize("json", t)
 
             for tree in t:
                 print(tree.heightRangeID.__str__() + ' ' + tree.species + ' ' + tree.neighbourhoodName)
 
-            return render(request, 'TreeFinder/home.html', {'Trees' : t})
+            return render(request, 'TreeFinder/ahome.html', {'Trees' : tJson})
         else:
             print(form.errors)
     else:
         # If the request was not a POST, display the form
         form = FilterRequestObjectForm()
     # Render the form
-    return render_to_response('TreeFinder/home.html', {'form': form}, context)
+    return render_to_response('TreeFinder/ahome.html', {'form': form}, context)
 
