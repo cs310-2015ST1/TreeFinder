@@ -14,7 +14,7 @@ def treefinder(request):
     context = RequestContext(request)
     treelist = Tree.objects.order_by("species")
     treelistJson = serializers.serialize("json", treelist)
-    return render(request, 'TreeFinder/ahome.html', context)
+    return render(request, 'TreeFinder/home.html', {'Trees': treelistJson})
 
 
 def filter(request):
@@ -55,12 +55,12 @@ def filter(request):
             for tree in t:
                 print(tree.heightRangeID.__str__() + ' ' + tree.species + ' ' + tree.neighbourhoodName)
 
-            return render(request, 'TreeFinder/ahome.html', {'Trees' : tJson})
+            return render(request, 'TreeFinder/home.html', {'Trees' : tJson})
         else:
             print(form.errors)
     else:
         # If the request was not a POST, display the form
         form = FilterRequestObjectForm()
     # Render the form
-    return render_to_response('TreeFinder/ahome.html', {'form': form}, context)
+    return render_to_response('TreeFinder/home.html', {'form': form}, context)
 
