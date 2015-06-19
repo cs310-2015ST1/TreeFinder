@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tree
+from .models import Tree, FilterRequestObject
 from django.core import serializers
 
 from django.shortcuts import render, HttpResponse, redirect, render_to_response
@@ -25,7 +25,35 @@ def filter(request):
         #if we have a valid form, then save it to the db
         if form.is_valid():
             form.save(commit=True)
-            return render(request, 'TreeFinder/home.html')
+            f = FilterRequestObject.objects.all()[0]
+
+            neighborhood = f.Neighbourhood
+            addr = f.Street
+            height = f.HeightMin
+            name = f.Species
+
+            kwargDict = {
+                'neighbourhoodName__iexact' : neighborhood ,
+                'onStreet__iexact': addr,
+                'heightRangeID__range': (height, 10),
+                'species__iexact': name
+            }
+
+            if neighborhood == 'UNSPECIFIED':
+                del kwargDict['neighbourhoodName__iexact']
+            if addr == 'UNSPECIFIED':
+                del kwargDict['onStreet__iexact']
+            if height == 0:
+                del kwargDict['heightRangeID__range']
+            if name == 'UNSPECIFIED':
+                del kwargDict['species__iexact']
+
+            t = Tree.objects.all().filter(**kwargDict)
+
+            for tree in t:
+                print(tree.heightRangeID.__str__() + ' ' + tree.species + ' ' + tree.neighbourhoodName)
+
+            return render(request, 'TreeFinder/home.html', {'Trees' : t})
         else:
             print(form.errors)
     else:
