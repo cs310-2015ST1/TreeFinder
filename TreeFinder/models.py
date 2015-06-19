@@ -89,14 +89,6 @@ class FilterRequestObject(models.Model):
         if name == 'UNSPECIFIED':
             del kwargDict['species__iexact']
 
-        t = Tree.objects.all()
-
-        filter = t.filter(**kwargDict)
-        for tree in filter:
-            print(tree.species + tree.neighbourhoodName + tree.heightRangeID.__str__())
-
-
-
     def save(self, *args, **kwargs):
         self.populateFilteredList()
         super(FilterRequestObject, self).save(*args, **kwargs)
