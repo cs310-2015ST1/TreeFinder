@@ -25,6 +25,7 @@ class Tree(models.Model):
     civicNumber = models.IntegerField(default=0)
     x_coordinate = models.FloatField(default=0.0)
     y_coordinate = models.FloatField(default=0.0)
+    user = models.ForeignKey(Account)
     # location = models.ForeignKey(Location)
     def __str__(self):              # __unicode__ on Python 2
         return self.species
@@ -143,5 +144,17 @@ class AddressMapping(models.Model):
     def __str__(self):
         return self.address
 
+class Account(models.Model):
+
+    username = models.CharField(max_length=200, default='UNSPECIFIED')
+    password = models.CharField(max_length = 200, default = 'UNSPECIFIED')
+
+    # added foreign key to Tree, for saving lists of them under each acct
+
+
+    def save(self, name, password):
+        super(Account, self).save(*args, **kwargs)
+        self.username = name
+        self.password = password
 
 
