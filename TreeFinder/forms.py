@@ -626,12 +626,6 @@ class FilterRequestObjectForm(ModelForm):
         model = FilterRequestObject
         fields = ['Neighbourhood', 'HeightMin', 'Species']
 
-
-class AccountForm(ModelForm):
-    Name = forms.CharField(label="Username")
-    Password = forms.CharField
-
-
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
