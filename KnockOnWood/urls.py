@@ -18,7 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('TreeFinder.urls'))
+    url(r'^', include('TreeFinder.urls')),
 ]
 # This is a test
 # hello
