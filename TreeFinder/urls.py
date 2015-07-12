@@ -5,5 +5,6 @@ urlpatterns = patterns('',
     url(r'^$', views.treefinder),
     url(r'^filter/$', views.filter, name="filter"),
     url(r'^register/$', views.register, name='register'),
+    url(r'^login/$', views.user_login, name='login'),
     )
 

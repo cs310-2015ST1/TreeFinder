@@ -17,6 +17,14 @@
         </form>
 
   <a href="/register/">Register Here</a>
+  </br>
+  <a href="/login/">Login</a>
+  </br>
+  {% if user.is_authenticated %}
+<h1>TreeFinder says... hello {{ user.username }}!</h1>
+{% else %}
+<h1>TreeFinder says... hello world!</h1>
+{% endif %}
 
     <style>
       html, body, #map-canvas {
