@@ -4,6 +4,7 @@ from django.core.files.uploadedfile import UploadedFile
 from django.conf import settings
 from xml.etree import ElementTree
 from django.contrib.auth.models import User
+from django.db.transaction import atomic
 
 UPLOAD_DIRECTORY = '/uploaded_files/'
 FULL_UPLOAD_PATH = settings.BASE_DIR + UPLOAD_DIRECTORY
@@ -45,6 +46,7 @@ class TreeData(models.Model):
     file = models.FileField(verbose_name='Filename', storage=fss, default='xml data file')
     uploadedFile = None
 
+    @atomic
     def parseIntoModel(self, xml_file):
         root = ElementTree.fromstring(xml_file.read())
         for streetTree in root.iter("StreetTree"):
@@ -141,7 +143,7 @@ class FilteredTree(models.Model):
 
 
 class AddressMapping(models.Model):
-    address = models.CharField(max_length=300)
+    address = models.CharField(max_length=300, unique=True)
     x_coordinate = models.FloatField(default=0.0)
     y_coordinate = models.FloatField(default=0.0)
 
