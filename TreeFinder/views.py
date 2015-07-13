@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from .models import Tree, FilterRequestObject
 from django.core import serializers
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response
 from django.template import RequestContext
 from .models import Tree
 from TreeFinder.forms import FilterRequestObjectForm, UserForm, UserProfileForm
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -161,3 +163,13 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render(request, 'TreeFinder/login.html', {})
+
+
+# Use the login_required() decorator to ensure only those logged in can access the view.
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+
+    # Take the user back to the homepage.
+    return HttpResponseRedirect('/')
