@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<!DOCTYPE COVStreetTrees [
+<!ELEMENT COVStreetTrees ( StreetTree+ ) >
+<!ELEMENT StreetTree ( CivicNumber, StdStreet, NeighbourhoodName, Cell, OnStreet, OnStreetBlock, StreetSideName, Assigned, HeightRangeID, Diameter, DatePlanted, PlantArea, Rootbarrier, Curb, CultivarName, GenusName, SpeciesName, CommonName ) >
+<!ELEMENT CivicNumber ( #PCDATA ) >
+<!ELEMENT StdStreet ( #PCDATA ) >
+<!ELEMENT NeighbourhoodName ( #PCDATA ) >
+<!ELEMENT Cell ( #PCDATA ) >
+<!ELEMENT OnStreet ( #PCDATA ) >
+<!ELEMENT OnStreetBlock ( #PCDATA ) >
+<!ELEMENT StreetSideName ( #PCDATA ) >
+<!ELEMENT Assigned ( #PCDATA ) >
+<!ELEMENT HeightRangeID ( #PCDATA ) >
+<!ELEMENT Diameter ( #PCDATA ) >
+<!ELEMENT DatePlanted ( #PCDATA ) >
+<!ELEMENT PlantArea ( #PCDATA ) >
+<!ELEMENT RootBarrier ( #PCDATA ) >
+<!ELEMENT Curb ( #PCDATA ) >
+<!ELEMENT CultivarName ( #PCDATA ) >
+<!ELEMENT GenusName ( #PCDATA ) >
+<!ELEMENT SpeciesName ( #PCDATA ) >
+<!ELEMENT CommonName ( #PCDATA ) >
+<!ATTLIST COVStreetTrees ExtractDate CDATA #REQUIRED >
+<!ATTLIST StreetTree TreeID ID #REQUIRED >
+]>
+<COVStreetTrees ExtractDate="2015-06-07">
+   <StreetTree TreeID="589">
+    <CivicNumber>4694</CivicNumber>
+    <StdStreet>W 8TH AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>12</Cell>
+    <OnStreet>BLANCA ST</OnStreet>
+    <OnStreetBlock>2400</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>5</HeightRangeID>
+    <Diameter>32</Diameter>
+    <DatePlanted/>
+    <PlantArea>B</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>ALNUS</GenusName>
+    <SpeciesName>RUGOSA</SpeciesName>
+    <CommonName>SPECKLED ALDER</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="2180">
+    <CivicNumber>4786</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>6</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>4700</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>2</HeightRangeID>
+    <Diameter>7</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>N</Curb><CultivarName> </CultivarName>
+    <GenusName>RHUS</GenusName>
+    <SpeciesName>TYPHINA</SpeciesName>
+    <CommonName>STAGHORN SUMAC</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1909">
+    <CivicNumber>3707</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>2</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>ODD</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>4</HeightRangeID>
+    <Diameter>24</Diameter>
+    <DatePlanted/>
+    <PlantArea>10</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>BETULA</GenusName>
+    <SpeciesName>NIGRA</SpeciesName>
+    <CommonName>RIVER BIRCH</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1910">
+    <CivicNumber>3707</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>5</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>ODD</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>5</HeightRangeID>
+    <Diameter>22</Diameter>
+    <DatePlanted/>
+    <PlantArea>10</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>BETULA</GenusName>
+    <SpeciesName>NIGRA</SpeciesName>
+    <CommonName>RIVER BIRCH</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1915">
+    <CivicNumber>3708</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>23</Cell>
+    <OnStreet>ALMA ST</OnStreet>
+    <OnStreetBlock>1800</OnStreetBlock>
+    <StreetSideName>ODD</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>3</HeightRangeID>
+    <Diameter>16</Diameter>
+    <DatePlanted/>
+    <PlantArea>6</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName>ATROPURPUREUM</CultivarName>
+    <GenusName>PRUNUS</GenusName>
+    <SpeciesName>CERASIFERA</SpeciesName>
+    <CommonName>PISSARD PLUM</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1917">
+    <CivicNumber>3732</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>1</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>2</HeightRangeID>
+    <Diameter>14</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>MALUS</GenusName>
+    <SpeciesName>FLORIBUNDA</SpeciesName>
+    <CommonName>JAPANESE FLOWERING CRABAPPLE</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1920">
+    <CivicNumber>3738</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>7</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>3</HeightRangeID>
+    <Diameter>14</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>MALUS</GenusName>
+    <SpeciesName>FLORIBUNDA</SpeciesName>
+    <CommonName>JAPANESE FLOWERING CRABAPPLE</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1922">
+    <CivicNumber>3755</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>7</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>ODD</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>3</HeightRangeID>
+    <Diameter>10</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>MALUS</GenusName>
+    <SpeciesName>FLORIBUNDA</SpeciesName>
+    <CommonName>JAPANESE FLOWERING CRABAPPLE</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1925">
+    <CivicNumber>3768</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>7</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>3</HeightRangeID>
+    <Diameter>18</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>MALUS</GenusName>
+    <SpeciesName>FLORIBUNDA</SpeciesName>
+    <CommonName>JAPANESE FLOWERING CRABAPPLE</CommonName>
+  </StreetTree>
+    <StreetTree TreeID="1928">
+    <CivicNumber>3791</CivicNumber>
+    <StdStreet>W 2ND AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>2</Cell>
+    <OnStreet>W 2ND AV</OnStreet>
+    <OnStreetBlock>3700</OnStreetBlock>
+    <StreetSideName>ODD</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>3</HeightRangeID>
+    <Diameter>12.25</Diameter>
+    <DatePlanted/>
+    <PlantArea>N</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>MALUS</GenusName>
+    <SpeciesName>FLORIBUNDA</SpeciesName>
+    <CommonName>JAPANESE FLOWERING CRABAPPLE</CommonName>
+  </StreetTree>
+</COVStreetTrees>

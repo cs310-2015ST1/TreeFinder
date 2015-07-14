@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE COVStreetTrees [
+<!ELEMENT COVStreetTrees ( StreetTree+ ) >
+<!ELEMENT StreetTree ( CivicNumber, StdStreet, NeighbourhoodName, Cell, OnStreet, OnStreetBlock, StreetSideName, Assigned, HeightRangeID, Diameter, DatePlanted, PlantArea, Rootbarrier, Curb, CultivarName, GenusName, SpeciesName, CommonName ) >
+<!ELEMENT CivicNumber ( #PCDATA ) >
+<!ELEMENT StdStreet ( #PCDATA ) >
+<!ELEMENT NeighbourhoodName ( #PCDATA ) >
+<!ELEMENT Cell ( #PCDATA ) >
+<!ELEMENT OnStreet ( #PCDATA ) >
+<!ELEMENT OnStreetBlock ( #PCDATA ) >
+<!ELEMENT StreetSideName ( #PCDATA ) >
+<!ELEMENT Assigned ( #PCDATA ) >
+<!ELEMENT HeightRangeID ( #PCDATA ) >
+<!ELEMENT Diameter ( #PCDATA ) >
+<!ELEMENT DatePlanted ( #PCDATA ) >
+<!ELEMENT PlantArea ( #PCDATA ) >
+<!ELEMENT RootBarrier ( #PCDATA ) >
+<!ELEMENT Curb ( #PCDATA ) >
+<!ELEMENT CultivarName ( #PCDATA ) >
+<!ELEMENT GenusName ( #PCDATA ) >
+<!ELEMENT SpeciesName ( #PCDATA ) >
+<!ELEMENT CommonName ( #PCDATA ) >
+<!ATTLIST COVStreetTrees ExtractDate CDATA #REQUIRED >
+<!ATTLIST StreetTree TreeID ID #REQUIRED >
+]>
+<COVStreetTrees ExtractDate="2015-06-07">
+   <StreetTree TreeID="589">
+    <CivicNumber>4694</CivicNumber>
+    <StdStreet>W 8TH AV</StdStreet>
+    <NeighbourhoodName>WEST POINT GREY</NeighbourhoodName>
+    <Cell>12</Cell>
+    <OnStreet>BLANCA ST</OnStreet>
+    <OnStreetBlock>2400</OnStreetBlock>
+    <StreetSideName>EVEN</StreetSideName>
+    <Assigned>N</Assigned>
+    <HeightRangeID>5</HeightRangeID>
+    <Diameter>32</Diameter>
+    <DatePlanted/>
+    <PlantArea>B</PlantArea>
+    <RootBarrier>N</RootBarrier>
+    <Curb>Y</Curb><CultivarName> </CultivarName>
+    <GenusName>ALNUS</GenusName>
+    <SpeciesName>RUGOSA</SpeciesName>
+    <CommonName>SPECKLED ALDER</CommonName>
+  </StreetTree>
+</COVStreetTrees>
