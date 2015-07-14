@@ -14,10 +14,18 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def treefinder(request):
-    context = RequestContext(request)
-    treelist = Tree.objects.order_by("species")
-    treelistJson = serializers.serialize("json", treelist)
-    return render(request, 'TreeFinder/home.html', {'Trees': treelistJson})
+    # context = RequestContext(request)
+    # treelist = Tree.objects.order_by("species")
+    # treelistJson = serializers.serialize("json", treelist)
+    kwargDict = {
+        'species__iexact': "WESTERN RED CEDAR"
+    }
+    t = Tree.objects.all().filter(**kwargDict)
+    tJson = serializers.serialize("json", t)
+
+    return render(request, 'TreeFinder/home.html', {'Trees' : tJson})
+
+    # return render(request, 'TreeFinder/home.html', {'Trees': treelistJson})
 
 
 

@@ -46,26 +46,40 @@ class TreeData(models.Model):
     file = models.FileField(verbose_name='Filename', storage=fss, default='xml data file')
     uploadedFile = None
 
-    @atomic
-    def parseIntoModel(self, xml_file):
+    @staticmethod
+    def parse(xml_file):
         root = ElementTree.fromstring(xml_file.read())
+        parsedData = []
         for streetTree in root.iter("StreetTree"):
-            onStreet = streetTree.find('OnStreet').text
-            civicNumber = streetTree.find('CivicNumber').text
-            address = str(civicNumber) + " " + onStreet + ", Vancouver, Canada"
+            thisTree = {}
+            thisTree['onStreet'] = streetTree.find('OnStreet').text
+            thisTree['onStreetBlock'] = streetTree.find('OnStreetBlock').text
+            thisTree['civicNumber'] = streetTree.find('CivicNumber').text
+            thisTree['address'] = str(thisTree['civicNumber']) + " " + thisTree['onStreet'] + ", Vancouver, Canada"
+            thisTree['commonName'] = streetTree.find('CommonName').text
+            thisTree['neighbourhoodName'] = streetTree.find('NeighbourhoodName').text
+            thisTree['cell'] = streetTree.find('Cell').text
+            thisTree['heightRangeID'] = streetTree.find('HeightRangeID').text
+            parsedData.append(thisTree)
+        return parsedData
+
+    @staticmethod
+    @atomic
+    def createTrees(parsedTreeData):
+        for tree in parsedTreeData:
             print("STARTING LOOKUP")
-            print(address)
+            print(tree['address'])
             try:
-                addressMap = AddressMapping.objects.get(address=address)
+                addressMap = AddressMapping.objects.get(address=tree['address'])
                 # print("COORDINATES: ")
 
-                t = (Tree(species=streetTree.find('CommonName').text,
-                          neighbourhoodName=streetTree.find('NeighbourhoodName').text,
-                          cell=streetTree.find('Cell').text,
-                          onStreet=onStreet,
-                          onStreetBlock=streetTree.find('OnStreetBlock').text,
-                          heightRangeID=streetTree.find('HeightRangeID').text,
-                          civicNumber=civicNumber,
+                t = (Tree(species=tree['commonName'],
+                          neighbourhoodName=tree['neighbourhoodName'],
+                          cell=tree['cell'],
+                          onStreet=tree['onStreet'],
+                          onStreetBlock=tree['onStreetBlock'],
+                          heightRangeID=tree['heightRangeID'],
+                          civicNumber=tree['civicNumber'],
                           x_coordinate=addressMap.x_coordinate,
                           y_coordinate=addressMap.y_coordinate
                           ))
@@ -73,13 +87,11 @@ class TreeData(models.Model):
 
             except AddressMapping.DoesNotExist:
                 print("MAPPING FAILURE")
-                # print(AddressMapping.objects.all()[0])
-                # print(address)
 
     def save(self, *args, **kwargs):
         super(TreeData, self).save(*args, **kwargs)
         uploadedFile = UploadedFile(file=self.file, name='test')
-        self.parseIntoModel(uploadedFile)
+        TreeData.createTrees(TreeData.parse(uploadedFile))
 
 
 ### Filtering code
