@@ -27,7 +27,12 @@ def treefinder(request):
 
     # return render(request, 'TreeFinder/home.html', {'Trees': treelistJson})
 
-
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('templates/home.html',
+                             context_instance=context)
 
 def filter(request):
     # Get the context from the request.
