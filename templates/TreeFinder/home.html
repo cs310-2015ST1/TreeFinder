@@ -25,56 +25,6 @@
     <a href="/login/">Login</a><br />
 {% endif %}
 
-
-    <style>
-      html, body, #map-canvas {
-        height: 90%;
-        margin: 2px;
-        padding: 5px;
-      }
-      .controls {
-        margin-top: 16px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 280px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      .pac-container {
-        font-family: Roboto;
-      }
-
-      #type-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        padding: 5px 11px 0px 11px;
-      }
-
-      #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-    </style>
     <title>Places search box</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script>
@@ -133,8 +83,24 @@ var map;
       // '</div>'+
       // '</div>';
 
+
   var infowindow = new google.maps.InfoWindow({
       content: contentString
+  });
+  google.maps.event.addListener(infowindow,'domready',function(){
+    var myDiv = document.createElement('button');
+    myDiv.id = 'saveButton';
+    myDiv.value = "testing";
+{#    myDiv.style.height#}
+
+    myDiv.onclick = function(){
+        console.log("save button clicked");
+    }
+    var parentNode = document.getElementById('content');
+    if (!parentNode.contains(myDiv)) {
+        console.log("PASS");
+       parentNode.appendChild(myDiv);
+    }
   });
     google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
