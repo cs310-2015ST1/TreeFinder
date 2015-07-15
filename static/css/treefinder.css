@@ -64,7 +64,7 @@
     margin-right: 20px;
 }
 
-#filterButton {
+#filterButton, #logoutButton, #loginButton, #registerButton, #loginFBButton, #logoutFBButton {
 	background-color:#44c767;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
@@ -79,10 +79,10 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
 }
-#filterButton:hover {
+#filterButton:hover, #logoutButton:hover, #loginButton:hover, #registerButton:hover, #loginFBButton:hover, #logoutFBButton:hover {
 	background-color:#5cbf2a;
 }
-#filterButton:active {
+#filterButton:active, #logoutButton:active, #loginButton:active, #registerButton:active, #loginFBButton:active, #logoutFBButton:active {
 	position:relative;
 	top:1px;
 }

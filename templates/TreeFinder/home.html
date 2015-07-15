@@ -207,23 +207,23 @@
   <tr>
     <th class="tg-s6z2">
    {% if user and not user.is_anonymous %}
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout with Facebook</a>
+       <a id="logoutFBButton" href="{% url 'auth:logout' %}?next={{ request.path }}">Logout with Facebook</a>
    {% else %}
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+       <a id="loginFBButton" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
    {% endif %}
 </th>
     <th class="tg-031e">{% if user.is_authenticated %}
-        <a href="/logout/">Logout with TreeFinder</a>
+        <a id="logoutButton" href="/logout/">Logout with TreeFinder</a>
         {% else %}
-        <a href="/login/">Login with TreeFinder</a></th>
+        <a id="loginButton" href="/login/">Login with TreeFinder</a></th>
         {% endif %}
-    <th class="tg-031e"><a href="/register/">Register</a></th>
+    <th class="tg-031e"><a id="registerButton" href="/register/">Register</a></th>
   </tr>
 </table></center>
 {% if user.is_authenticated %}
-<h1>TreeFinder says... hello {{ user.username }}!</h1>
+<center><h1>TreeFinder says... hello {{ user.username }}!</h1></center>
 {% else %}
-<h1>TreeFinder says... hello stranger!</h1>
+<center><h1>TreeFinder says... hello stranger!</h1></center>
 {% endif %}
 
       <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
