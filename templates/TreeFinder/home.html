@@ -158,8 +158,8 @@
        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
      </li>
        <li>
-    <a href="/login/">Login</a><br />
-       <a href="/register/">Register Here</a></li>
+    <a href="/login/">Login with TreeFinder</a><br />
+       <a href="/register/">Register</a></li>
 {#     <li>#}
 {#       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>#}
 {#     </li>#}
@@ -176,34 +176,57 @@
 </div>
 </div>
 {# login popup ends here #}
- <div>
- <h1>Social Network Authentication</h1>
-
- <p>
-   <ul>
-   {% if user and not user.is_anonymous %}
-     <li>
-       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-     </li>
-     <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-     </li>
-   {% else %}
-     <li>
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-     </li>
+{# <div>#}
+{# <h1>Social Network Authentication</h1>#}
+{##}
+{# <p>#}
+{#   <ul>#}
+{#   {% if user and not user.is_anonymous %}#}
 {#     <li>#}
-{#       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>#}
+{#       <a>Hello {{ user.get_full_name|default:user.username }}!</a>#}
 {#     </li>#}
 {#     <li>#}
-{#       <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>#}
+{#       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>#}
 {#     </li>#}
-   {% endif %}
-   </ul>
- </p>
- </div>
+{#   {% else %}#}
+{#     <li>#}
+{#       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>#}
+{#     </li>#}
+{#   {% endif %}#}
+{#   </ul>#}
+{# </p>#}
+{# </div>#}
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-s6z2{text-align:center}
+</style>
+<center><table class="tg">
+  <tr>
+    <th class="tg-s6z2">
+   {% if user and not user.is_anonymous %}
+       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout with Facebook</a>
+   {% else %}
+       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+   {% endif %}
+</th>
+    <th class="tg-031e">{% if user.is_authenticated %}
+        <a href="/logout/">Logout with TreeFinder</a>
+        {% else %}
+        <a href="/login/">Login with TreeFinder</a></th>
+        {% endif %}
+    <th class="tg-031e"><a href="/register/">Register</a></th>
+  </tr>
+</table></center>
+{% if user.is_authenticated %}
+<h1>TreeFinder says... hello {{ user.username }}!</h1>
+{% else %}
+<h1>TreeFinder says... hello stranger!</h1>
+{% endif %}
+
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 
       <form id="filter_form" method="post" action="/filter/">
@@ -215,15 +238,6 @@
 
             <input id="filterButton" type="submit" name="submit" value="Find Trees" />
         </form>
-
-{% if user.is_authenticated %}
-    <h1>TreeFinder says... hello {{ user.username }}!</h1>
-    <a href="/logout/">Logout</a><br />
-{% else %}
-    <h1>TreeFinder says... hello world!</h1>
-    <a href="/register/">Register Here</a><br />
-    <a href="/login/">Login</a><br />
-{% endif %}
 
     <title>Places search box</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
