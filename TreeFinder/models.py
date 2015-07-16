@@ -17,17 +17,8 @@ class Location(models.Model):
     y_coordinate = models.FloatField(default=0.0)
 
 
-class UserProfile(models.Model):
-    # Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
-    # additional attributes we wish to include.
-    website = models.URLField(blank=True)
-
-     # Override the __unicode__() method to return out something meaningful
-    def __unicode__(self):
-        return self.user.username
-
 class Tree(models.Model):
+
     species = models.CharField(max_length=200)
     neighbourhoodName = models.CharField(max_length=200, default='UNSPECIFIED')
     cell = models.IntegerField(default=0)
@@ -40,6 +31,18 @@ class Tree(models.Model):
     # location = models.ForeignKey(Location)
     def __str__(self):  # __unicode__ on Python 2
         return self.species
+
+class UserProfile(models.Model):
+    # Makes a tree list
+    treelist = models.ManyToManyField(Tree)
+    # Links UserProfile to a User model instance.
+    user = models.OneToOneField(User)
+    # additional attributes we wish to include.
+    website = models.URLField(blank=True)
+
+     # Override the __unicode__() method to return out something meaningful
+    def __unicode__(self):
+        return self.user.username
 
 
 class TreeData(models.Model):
