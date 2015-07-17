@@ -638,3 +638,10 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website',)
+
+class PasswordForm(forms.ModelForm):
+    password = forms.CharField(widget = forms.PasswordInput())
+
+    class meta:
+        model = User
+        fields = ('password')

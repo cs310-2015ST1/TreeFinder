@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response
 from django.template import RequestContext
 from .models import Tree
-from TreeFinder.forms import FilterRequestObjectForm, UserForm, UserProfileForm
+from TreeFinder.forms import FilterRequestObjectForm, UserForm, UserProfileForm, PasswordForm
 from django.contrib.auth.decorators import login_required
 import json
 
@@ -191,7 +191,19 @@ def profile(request):
 
     trees = request.user.userprofile.treelist.all()
 
-    return render(request,'TreeFinder/profile.html', {"trees":trees})
+    if request.method == 'POST':
+
+        password = request.POST.get('password')
+        user = request.user.userprofile.user
+        user.set_password(password)
+        user.save()
+
+        return render(request, 'TreeFinder/profile.html', {"trees":trees})
+
+
+    else:
+
+        return render(request,'TreeFinder/profile.html', {"trees":trees, 'password_form': PasswordForm,})
 
 
 

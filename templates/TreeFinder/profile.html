@@ -20,6 +20,9 @@
 </table></center>
     <ul>
     <center><h1>Hello {{ user.username }}! Welcome to your profile!</h1></center>
+      <form id="password_form" method="post" action="/profile/">
+          New Password: <input type="password" name="password" value="" size="50" /> <input type="submit" value="submit" />
+      </form>
         <br> List of Saved Trees </br>
     <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -30,7 +33,7 @@
 <table class="tg">
   <tr>
       {% for t in trees %}
-   <th class="tg-031e"> <br> {{ t }} </br> </th>
+   <th class="tg-031e"> <br> <td>Species:{{ t.species }}</td><td>Address: {{ t.civicNumber }}{{ t.onStreet }}</td> </br> </th>
   </tr></th>
        {% endfor %}
   </tr>
