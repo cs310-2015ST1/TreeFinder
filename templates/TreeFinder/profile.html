@@ -2,10 +2,42 @@
 
 {% block content %}
     <form  method="post" action="/profile/">
+    <center><table class="tg">
+  <tr>
+
+   {% if user and not user.is_anonymous %}
+       <a id="logoutFBButton" href="{% url 'auth:logout' %}?next={{ request.path }}">Logout </a>
+   {% else %}
+       <a id="loginFBButton" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+   {% endif %}
+    {% if user.is_authenticated %}
+        <a id="logoutButton" href="/profile/">Profile</a>
+        {% else %}
+        <a id="loginButton" href="/login/">Login with TreeFinder</a>
+        {% endif %}
+    <a id="registerButton" href="/">Home</a>
+  </tr>
+</table></center>
     <ul>
-        {% for t in trees %}
-            {{ t }}
-        {% endfor %}
+    <center><h1>Hello {{ user.username }}! Welcome to your profile!</h1></center>
+        <br> List of Saved Trees </br>
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-s6z2{text-align:center}
+</style>
+<table class="tg">
+  <tr>
+      {% for t in trees %}
+   <th class="tg-031e"> <br> {{ t }} </br> </th>
+  </tr></th>
+       {% endfor %}
+  </tr>
+</table>
+
+
+
     </ul>
     </form>
 
