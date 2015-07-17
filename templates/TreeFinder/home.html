@@ -1,31 +1,12 @@
 {% extends 'TreeFinder/base.html' %}
-
+<meta property="og:site_name"       content="TreeFinder">
+<meta property="og:title"           content="Website to Find Trees All Over The City" />
+<meta property="og:image"           content="http://i.imgur.com/AgPcglv.jpg" />
+<meta property="og:description"     content="This is a website designed to help you find trees all over Vancouver!" />
 {% block content %}
 {# Login Popup Begins here #}
 	<style type="text/css">
 	/* style untuk link popup */
-	a.popup-link {
-		padding:17px 0;
-		text-align: center;
-		margin:10% auto;
-		position: relative;
-		width: 300px;
-		color: #fff;
-		text-decoration: none;
-		background-color: #FFBA00;
-		border-radius: 3px;
-		box-shadow: 0 5px 0px 0px #eea900;
-		display: block;
-	}
-	a.popup-link:hover {
-		background-color: #ff9900;
-		box-shadow: 0 3px 0px 0px #eea900;
-		-webkit-transition:all 1s;
-		transition:all 1s;
-	}
-	/* end link popup*/
-	/* animasi popup */
-
 	@-webkit-keyframes autopopup {
 		from {opacity: 0;margin-top:-200px;}
 		to {opacity: 1;}
@@ -38,8 +19,6 @@
 		from {opacity: 0;margin-top:-200px;}
 		to {opacity: 1;}
 	}
-	/* end animasi popup */
-	/*style untuk popup */
 	#popup {
 		background-color: rgba(0,0,0,0.8);
 		position: fixed;
@@ -68,6 +47,7 @@
 	@media (min-width: 768px){
 		.popup-container {
 			width:600px;
+
 		}
 	}
 	@media (max-width: 767px){
@@ -79,8 +59,7 @@
 		position: relative;
 		margin:7% auto;
 		padding:30px 50px;
-		background-color: #fafafa;
-		color:#333;
+		color:#ffffff;
 		border-radius: 3px;
 	}
 
@@ -100,11 +79,14 @@
 	/* style untuk isi popup */
 	.popup-form {
 		margin:10px auto;
+
 	}
 		.popup-form h2 {
 			margin-bottom: 5px;
 			font-size: 37px;
+            font-color: #ffffff;
 			text-transform: uppercase;
+
 		}
 		.popup-form .input-group {
 			margin:10px auto;
@@ -118,27 +100,10 @@
 				display: block;
 				width: 100%;
 			}
-			.popup-form .input-group input:focus {
-				outline-color:#FB8833;
-			}
-			.popup-form .input-group input[type="email"] {
-				border:0px;
-				position: relative;
-			}
-			.popup-form .input-group input[type="submit"] {
-				background-color: #FB8833;
-				color: #fff;
-				border: 0;
-				cursor: pointer;
-			}
-			.popup-form .input-group input[type="submit"]:focus {
-				box-shadow: inset 0 3px 7px 3px #ea7722;
-			}
 	/* end style isi popup */
 
 	</style>
 </head>
-<body>
 <div class="popup-wrapper" id="popup">
 	<div class="popup-container">
 
@@ -153,22 +118,14 @@
        <a>Hello {{ user.get_full_name|default:user.username }}!</a>
      </li>
      <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+       <a id='logoutButton' href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
      </li>
    {% else %}
-       <p>Choose one of the following options to login!</p>
-     <li>
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-     </li>
-       <li>
-    <a href="/login/">Login with TreeFinder</a><br />
-       <a href="/register/">Register</a></li>
-{#     <li>#}
-{#       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>#}
-{#     </li>#}
-{#     <li>#}
-{#       <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>#}
-{#     </li>#}
+       <center><p>Choose one of the following options to login!</p></center>
+
+      <center> <br><a id='loginFBButton' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a></br>
+    <br><a id='loginButton' href="/login/">Login with TreeFinder</a></br>
+      <br> <a id='registerButton' href="/register/">Register</a></br> </center>
    {% endif %}
    </ul>
 				</p>
@@ -178,27 +135,6 @@
 	</div>
 </div>
 </div>
-{# login popup ends here #}
-{# <div>#}
-{# <h1>Social Network Authentication</h1>#}
-{##}
-{# <p>#}
-{#   <ul>#}
-{#   {% if user and not user.is_anonymous %}#}
-{#     <li>#}
-{#       <a>Hello {{ user.get_full_name|default:user.username }}!</a>#}
-{#     </li>#}
-{#     <li>#}
-{#       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>#}
-{#     </li>#}
-{#   {% else %}#}
-{#     <li>#}
-{#       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>#}
-{#     </li>#}
-{#   {% endif %}#}
-{#   </ul>#}
-{# </p>#}
-{# </div>#}
   <head>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#ffffff;}
@@ -241,12 +177,15 @@
 
             <input id="filterButton" type="submit" name="submit" value="Find Trees" />
         </form>
+  <div class="fb-share-button" data-href="https://treeseeker.herokuapp.com" data-layout="button_count"></div>
     <script>
+
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
 var map;
-
+var infoWindow;
+var saveButton;
 
     function initializeTree(tree) {
       var latitude = tree.x_coordinate;
@@ -256,7 +195,8 @@ var map;
         var marker = new google.maps.Marker({
           position: latlng,
           map: map,
-            title:"its a tree"
+            title:"its a tree",
+            icon:"/static/treeicon.png",
         });
 
           var contentString = '<div id="content">'+
@@ -273,18 +213,21 @@ var map;
           '<td>Neighbourhood: </td>' +
           '<td>'+tree.neighbourhoodName+'</td>' +
         '</tr>'  +
+                  '<tr>' + '<td> Height Estimate (feet): </td>' + '<td>' +(tree.heightRangeID * 10) + '</td>' + '</tr>'
       '</table>' +
       '</div>';
 
 
 
-  var infowindow = new google.maps.InfoWindow({
+  infowindow = new google.maps.InfoWindow({
       content: contentString
   });
   google.maps.event.addListener(infowindow,'domready',function(){
-    var myDiv = document.createElement('button');
-    myDiv.id = 'saveButton';
-    myDiv.value = "testing";
+      if (!saveButton) {
+           saveButton = document.createElement('button');
+           saveButton.id = 'saveButton';
+           saveButton.innerHTML = "Save tree";
+      }
    {#    myDiv.style.height#}
 
     function send_json(){
@@ -299,7 +242,7 @@ var map;
 
     }
 
-    myDiv.onclick = function(){
+    saveButton.onclick = function(){
         console.log("save button clicked");
         // call handler for button submit
         send_json();
@@ -307,9 +250,9 @@ var map;
     }
 
     var parentNode = document.getElementById('content');
-    if (!parentNode.contains(myDiv)) {
+    if (!parentNode.contains(saveButton)) {
         console.log("PASS");
-       parentNode.appendChild(myDiv);
+       parentNode.appendChild(saveButton);
     }
   });
     google.maps.event.addListener(marker, 'click', function() {
