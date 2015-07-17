@@ -1,7 +1,14 @@
 {% extends 'TreeFinder/base.html' %}
 
 {% block content %}
+    <form  method="post" action="/profile/">
 
+    <ul>
+        {% for t in trees %}
+            {{ t }}
+        {% endfor %}
+    </ul>
+    </form>
 
 
 {% endblock %}

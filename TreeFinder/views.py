@@ -188,8 +188,10 @@ def user_logout(request):
 
 @login_required
 def profile(request):
-    context = RequestContext(request)
-    return render(request,'TreeFinder/profile.html', context)
+
+    trees = request.user.userprofile.treelist.all()
+
+    return render(request,'TreeFinder/profile.html', {"trees":trees})
 
 
 
