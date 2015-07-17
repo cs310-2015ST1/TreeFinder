@@ -41,7 +41,7 @@ class UserProfile(models.Model):
     website = models.URLField(blank=True)
 
      # Override the __unicode__() method to return out something meaningful
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
 
 

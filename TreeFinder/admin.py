@@ -1,4 +1,3 @@
-__author__ = 'gurneet_kalra_3'
 
 from django.contrib import admin
 from TreeFinder.models import Tree, TreeData, FilterRequestObject, AddressMapping, UserProfile
@@ -19,8 +18,11 @@ class FilterRequestObjectAdmin(admin.ModelAdmin):
 class AddressMappingAdmin(admin.ModelAdmin):
     list_display = ('address', 'x_coordinate', 'y_coordinate')
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "website")
+
 admin.site.register(Tree, TreeAdmin)
 admin.site.register(TreeData, TreeDataAdmin)
 admin.site.register(FilterRequestObject, FilterRequestObjectAdmin)
 admin.site.register(AddressMapping, AddressMappingAdmin)
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin)

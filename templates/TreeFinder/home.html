@@ -210,13 +210,13 @@
   <tr>
     <th class="tg-s6z2">
    {% if user and not user.is_anonymous %}
-       <a id="logoutFBButton" href="{% url 'auth:logout' %}?next={{ request.path }}">Logout with Facebook</a>
+       <a id="logoutFBButton" href="{% url 'auth:logout' %}?next={{ request.path }}">Logout </a>
    {% else %}
        <a id="loginFBButton" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
    {% endif %}
 </th>
     <th class="tg-031e">{% if user.is_authenticated %}
-        <a id="logoutButton" href="/logout/">Logout with TreeFinder</a>
+        <a id="logoutButton" href="/profile/">Profile</a>
         {% else %}
         <a id="loginButton" href="/login/">Login with TreeFinder</a></th>
         {% endif %}

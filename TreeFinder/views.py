@@ -187,9 +187,17 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
 
+@login_required
+def profile(request):
+    context = RequestContext(request)
+    return render(request,'TreeFinder/profile.html', context)
 
-#@login_required
+
+
+@login_required
 def addTreeToTreeList(request):
     print("view function addTreeToTreeList called")
-    return HttpResponse('Teh meoa shrea ')
-
+    print(request.body)
+    # some magic that gives us the proper tree with respect to the requested json format tree string
+    #request.user.userprofile.treelist.add()
+    return HttpResponse("yoi tuy retyu")
