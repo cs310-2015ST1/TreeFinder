@@ -153,16 +153,16 @@
        <a>Hello {{ user.get_full_name|default:user.username }}!</a>
      </li>
      <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+       <a id='logoutButton' href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
      </li>
    {% else %}
        <p>Choose one of the following options to login!</p>
      <li>
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+       <a id='loginFBButton' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
      </li>
        <li>
-    <a href="/login/">Login with TreeFinder</a><br />
-       <a href="/register/">Register</a></li>
+    <a id='loginButton' href="/login/">Login with TreeFinder</a><br />
+       <a id='registerButton' href="/register/">Register</a></li>
 {#     <li>#}
 {#       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>#}
 {#     </li>#}
@@ -273,6 +273,7 @@ var map;
           '<td>Neighbourhood: </td>' +
           '<td>'+tree.neighbourhoodName+'</td>' +
         '</tr>'  +
+                  '<tr>' + '<td> Height Estimate (feet): </td>' + '<td>' +(tree.heightRangeID * 10) + '</td>' + '</tr>'
       '</table>' +
       '</div>';
 
