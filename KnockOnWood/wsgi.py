@@ -33,4 +33,7 @@ if len(AddressMapping.objects.all()) == 0:
     print("GEOCODE PARSING COMPLETE")
 
 
-application = get_wsgi_application()
+from dj_static import Cling
+
+application = Cling(get_wsgi_application())
+

@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^addTreeToTreeList/$', views.addTreeToTreeList, name='addTreeToTreeList'),
+    url(r'^filter/addTreeToTreeList/$', views.addTreeToTreeList, name='addTreeToTreeList'),
 
     )
 

@@ -186,11 +186,11 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
 
+
+
 @login_required
 def profile(request):
-
     trees = request.user.userprofile.treelist.all()
-
     return render(request,'TreeFinder/profile.html', {"trees":trees})
 
 
