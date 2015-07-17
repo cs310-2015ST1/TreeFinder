@@ -184,7 +184,8 @@
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
 var map;
-
+var infoWindow;
+var saveButton;
 
     function initializeTree(tree) {
       var latitude = tree.x_coordinate;
@@ -218,13 +219,15 @@ var map;
 
 
 
-  var infowindow = new google.maps.InfoWindow({
+  infowindow = new google.maps.InfoWindow({
       content: contentString
   });
   google.maps.event.addListener(infowindow,'domready',function(){
-    var myDiv = document.createElement('button');
-    myDiv.id = 'saveButton';
-    myDiv.value = "testing";
+      if (!saveButton) {
+           saveButton = document.createElement('button');
+           saveButton.id = 'saveButton';
+           saveButton.innerHTML = "Save tree";
+      }
    {#    myDiv.style.height#}
 
     function send_json(){
@@ -239,7 +242,7 @@ var map;
 
     }
 
-    myDiv.onclick = function(){
+    saveButton.onclick = function(){
         console.log("save button clicked");
         // call handler for button submit
         send_json();
@@ -247,9 +250,9 @@ var map;
     }
 
     var parentNode = document.getElementById('content');
-    if (!parentNode.contains(myDiv)) {
+    if (!parentNode.contains(saveButton)) {
         console.log("PASS");
-       parentNode.appendChild(myDiv);
+       parentNode.appendChild(saveButton);
     }
   });
     google.maps.event.addListener(marker, 'click', function() {
