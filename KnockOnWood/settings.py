@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'TreeFinder',
     'social.apps.django_app.default',
+    'django_social_share'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
