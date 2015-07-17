@@ -328,7 +328,7 @@ var map;
             for (i=0; i<allTrees.length; i++) {
               console.log("CREATING MARKER");
               var tree = allTrees[i].fields;
-              // initializeTree(tree.x_coordinate, tree.y_coordinate);
+              tree.ID = allTrees[i].pk;
               initializeTree(tree);
             }
       }

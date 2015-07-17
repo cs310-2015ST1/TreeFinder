@@ -8,8 +8,7 @@ from django.template import RequestContext
 from .models import Tree
 from TreeFinder.forms import FilterRequestObjectForm, UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
-
-
+import json
 
 # Create your views here.
 
@@ -197,7 +196,13 @@ def profile(request):
 @login_required
 def addTreeToTreeList(request):
     print("view function addTreeToTreeList called")
+    jsondata = request.body
     print(request.body)
+    tree = json.loads(jsondata.decode('utf-8') )
+    print(tree["ID"])
     # some magic that gives us the proper tree with respect to the requested json format tree string
-    #request.user.userprofile.treelist.add()
+    theMoneyShot = Tree.objects.get(id=tree["ID"])
+    request.user.userprofile.treelist.add(theMoneyShot)
+
     return HttpResponse("yoi tuy retyu")
+

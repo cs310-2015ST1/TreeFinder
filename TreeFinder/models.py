@@ -19,6 +19,9 @@ class Location(models.Model):
 
 class Tree(models.Model):
 
+    # rating = models.FloatField(default=0.0)
+    # ratingcount = models.IntegerField(default=0.0)
+
     species = models.CharField(max_length=200)
     neighbourhoodName = models.CharField(max_length=200, default='UNSPECIFIED')
     cell = models.IntegerField(default=0)
@@ -31,6 +34,12 @@ class Tree(models.Model):
     # location = models.ForeignKey(Location)
     def __str__(self):  # __unicode__ on Python 2
         return self.species
+
+    # def rateTree(self, rating):
+    #     totalscore = self.rating * self.ratingcount
+    #     self.ratingcount += 1
+    #     totalscore = totalscore + rating
+    #     self.rating = totalscore / self.ratingcount
 
 class UserProfile(models.Model):
     # Makes a tree list
