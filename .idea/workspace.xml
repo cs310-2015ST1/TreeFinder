@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2c5325f-2c41-4491-a0b0-5bb4733543e3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/TreeFinder/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/KnockOnWood.iml" afterPath="$PROJECT_DIR$/.idea/KnockOnWood.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TreeFinder/admin.py" afterPath="$PROJECT_DIR$/TreeFinder/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/TreeFinder/home.html" afterPath="$PROJECT_DIR$/templates/TreeFinder/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TreeFinder/models.py" afterPath="$PROJECT_DIR$/TreeFinder/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TreeFinder/urls.py" afterPath="$PROJECT_DIR$/TreeFinder/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TreeFinder/views.py" afterPath="$PROJECT_DIR$/TreeFinder/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KnockOnWood.iws" />
@@ -767,7 +760,13 @@
       <option name="project" value="LOCAL" />
       <updated>1437089292382</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added profile page, assoc. view.">
+      <created>1437096572473</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1437096572473</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -842,7 +841,8 @@
     <MESSAGE value="added form choices" />
     <MESSAGE value="added facebook auth" />
     <MESSAGE value="ajax comms. implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajax comms. implemented" />
+    <MESSAGE value="added profile page, assoc. view." />
+    <option name="LAST_COMMIT_MESSAGE" value="added profile page, assoc. view." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
