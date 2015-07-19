@@ -7,15 +7,19 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 
 import os, json
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KnockOnWood.settings")
+
 from django.db.transaction import atomic
 
 from django.core.wsgi import get_wsgi_application
 
 from TreeFinder.models import AddressMapping
+#os.environ["DJANGO_SETTINGS_MODULE"] = "KnockOnWood.settings"
 
 from django.conf import settings
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KnockOnWood.settings")
+from dj_static import Cling
+
 
 @atomic
 def createMappings(pairs):
@@ -31,9 +35,7 @@ if len(AddressMapping.objects.all()) == 0:
     json_data.close()
     createMappings(mappings)
     print("GEOCODE PARSING COMPLETE")
-
-
-from dj_static import Cling
+    
 
 application = Cling(get_wsgi_application())
 

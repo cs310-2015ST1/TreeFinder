@@ -645,3 +645,5 @@ class PasswordForm(forms.ModelForm):
     class meta:
         model = User
         fields = ('password')
+
+

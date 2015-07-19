@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGIN_URL = '/login/'
 
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings - unsuitable for production...
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -30,7 +30,7 @@ SECRET_KEY = '#nw^uvqhmkjmot*dx*&=2h7nmf$v7ycc-h08pv=(ccffqo@esu'
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Application definition ...ddfgdfg
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -40,12 +40,33 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TreeFinder',
+    'social.apps.django_app.default',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+#ASDFA
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

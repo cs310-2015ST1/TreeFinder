@@ -5,113 +5,113 @@
 <meta property="og:description"     content="This is a website designed to help you find trees all over Vancouver!" />
 {% block content %}
 {# Login Popup Begins here #}
-	<style type="text/css">
-	/* style untuk link popup */
-	@-webkit-keyframes autopopup {
-		from {opacity: 0;margin-top:-200px;}
-		to {opacity: 1;}
-	}
-	@-moz-keyframes autopopup {
-		from {opacity: 0;margin-top:-200px;}
-		to {opacity: 1;}
-	}
-	@keyframes autopopup {
-		from {opacity: 0;margin-top:-200px;}
-		to {opacity: 1;}
-	}
-	#popup {
-		background-color: rgba(0,0,0,0.8);
-		position: fixed;
-		top:0;
-		left:0;
-		right:0;
-		bottom:0;
-		margin:0;
-		-webkit-animation:autopopup 2s;
-		-moz-animation:autopopup 2s;
-		animation:autopopup 2s;
-	}
-	#popup:target {
-		-webkit-transition:all 1s;
-		-moz-transition:all 1s;
-		transition:all 1s;
-		opacity: 0;
-		visibility: hidden;
-	}
+  <style type="text/css">
+  /* style untuk link popup */
+  @-webkit-keyframes autopopup {
+    from {opacity: 0;margin-top:-200px;}
+    to {opacity: 1;}
+  }
+  @-moz-keyframes autopopup {
+    from {opacity: 0;margin-top:-200px;}
+    to {opacity: 1;}
+  }
+  @keyframes autopopup {
+    from {opacity: 0;margin-top:-200px;}
+    to {opacity: 1;}
+  }
+  #popup {
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    -webkit-animation:autopopup 2s;
+    -moz-animation:autopopup 2s;
+    animation:autopopup 2s;
+  }
+  #popup:target {
+    -webkit-transition:all 1s;
+    -moz-transition:all 1s;
+    transition:all 1s;
+    opacity: 0;
+    visibility: hidden;
+  }
 
     .tg {
         border-color: #ffffff;
 
     }
 
-	@media (min-width: 768px){
-		.popup-container {
-			width:600px;
+  @media (min-width: 768px){
+    .popup-container {
+      width:600px;
 
-		}
-	}
-	@media (max-width: 767px){
-		.popup-container {
-			width:100%;
-		}
-	}
-	.popup-container {
-		position: relative;
-		margin:7% auto;
-		padding:30px 50px;
-		color:#ffffff;
-		border-radius: 3px;
-	}
+    }
+  }
+  @media (max-width: 767px){
+    .popup-container {
+      width:100%;
+    }
+  }
+  .popup-container {
+    position: relative;
+    margin:7% auto;
+    padding:30px 50px;
+    color:#ffffff;
+    border-radius: 3px;
+  }
 
-	a.popup-close {
-		position: absolute;
-		top:3px;
-		right:3px;
-		background-color: #333;
-		padding:7px 10px;
-		font-size: 20px;
-		text-decoration: none;
-		line-height: 1;
-		color:#fff;
-	}
-	/* end style popup */
+  a.popup-close {
+    position: absolute;
+    top:3px;
+    right:3px;
+    background-color: #333;
+    padding:7px 10px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 1;
+    color:#fff;
+  }
+  /* end style popup */
 
-	/* style untuk isi popup */
-	.popup-form {
-		margin:10px auto;
+  /* style untuk isi popup */
+  .popup-form {
+    margin:10px auto;
 
-	}
-		.popup-form h2 {
-			margin-bottom: 5px;
-			font-size: 37px;
+  }
+    .popup-form h2 {
+      margin-bottom: 5px;
+      font-size: 37px;
             font-color: #ffffff;
-			text-transform: uppercase;
+      text-transform: uppercase;
 
-		}
-		.popup-form .input-group {
-			margin:10px auto;
-		}
-			.popup-form .input-group input {
-				padding:17px;
-				text-align: center;
-				margin-bottom: 10px;
-				border-radius:3px;
-				font-size: 16px;
-				display: block;
-				width: 100%;
-			}
-	/* end style isi popup */
+    }
+    .popup-form .input-group {
+      margin:10px auto;
+    }
+      .popup-form .input-group input {
+        padding:17px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius:3px;
+        font-size: 16px;
+        display: block;
+        width: 100%;
+      }
+  /* end style isi popup */
 
-	</style>
+  </style>
 </head>
 <div class="popup-wrapper" id="popup">
-	<div class="popup-container">
+  <div class="popup-container">
 
-		<!-- Konten popup, silahkan ganti sesuai kebutughan -->
-		<form action="http://www.syakirurohman.net/2015/01/tutorial-membuat-popup-tanpa-javascript-jquery.html#" method="post" class="popup-form">
-			<h2>Welcome To TreeFinder!</h2>
-			<div class="input-group">
-				<p>
+    <!-- Konten popup, silahkan ganti sesuai kebutughan -->
+    <form action="http://www.syakirurohman.net/2015/01/tutorial-membuat-popup-tanpa-javascript-jquery.html#" method="post" class="popup-form">
+      <h2>Welcome To TreeFinder!</h2>
+      <div class="input-group">
+        <p>
    <ul>
    {% if user and not user.is_anonymous %}
      <li>
@@ -128,11 +128,11 @@
       <br> <a id='registerButton' href="/register/">Register</a></br> </center>
    {% endif %}
    </ul>
-				</p>
-			</div>
-		</form>
-		<a class="popup-close" href="#popup">X</a>
-	</div>
+        </p>
+      </div>
+    </form>
+    <a class="popup-close" href="#popup">X</a>
+  </div>
 </div>
 </div>
   <head>
@@ -183,21 +183,43 @@
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
+google.maps.InfoWindow.prototype.opened = false;
+var currentInfoWindow;
 var map;
-var infoWindow;
-var saveButton;
+var currentUser = "{{user}}"
+{#var infoWindow;#}
+{#var saveButton;#}
+var infoWindows = [];
 
-    function initializeTree(tree) {
+    function initializeTree(tree, treeSavers) {
+        var treeIsSaved = false;
+        // if this tree has been saved by the currently logged-in user
+        if (treeSavers.indexOf(currentUser) > -1) {
+            treeIsSaved = true;
+        }
+{#        var saveButton;#}
       var latitude = tree.x_coordinate;
       var longitude = tree.y_coordinate;
         console.log(latitude + ", " + longitude);
         var latlng = new google.maps.LatLng(latitude,longitude);
-        var marker = new google.maps.Marker({
-          position: latlng,
-          map: map,
+        var test = false;
+        if (treeIsSaved) {
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
             title:"its a tree",
-            icon:"/static/treeicon.png",
+            icon:"/static/savedtree.png",
         });
+        }
+        else {
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title:"its a tree",
+                icon:"/static/treeicon.png",
+        });
+        }
+{#        marker.icon = "/static/treeicon.png";#}
 
           var contentString = '<div id="content">'+
       '<table border="1">' +
@@ -219,15 +241,18 @@ var saveButton;
 
 
 
-  infowindow = new google.maps.InfoWindow({
+  var infowindow = new google.maps.InfoWindow({
       content: contentString
   });
-  google.maps.event.addListener(infowindow,'domready',function(){
-      if (!saveButton) {
-           saveButton = document.createElement('button');
+
+   infoWindows.push(infowindow);
+   console.log("NUMBER OF POPUPS = " + infoWindows.length)
+  google.maps.event.addListener(infowindow,'domready',function() {
+{#      if (!saveButton) {#}
+           var saveButton = document.createElement('button');
            saveButton.id = 'saveButton';
            saveButton.innerHTML = "Save tree";
-      }
+{#      }#}
    {#    myDiv.style.height#}
 
     function send_json(){
@@ -239,14 +264,12 @@ var saveButton;
              type: "POST",
              data: jsontree
          });
-
     }
-
+    console.log("SETTING CLICK LISTENER");
     saveButton.onclick = function(){
         console.log("save button clicked");
         // call handler for button submit
         send_json();
-
     }
 
     var parentNode = document.getElementById('content');
@@ -256,7 +279,53 @@ var saveButton;
     }
   });
     google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
+        if (currentInfoWindow) {
+            currentInfoWindow.close();
+{#            currentInfoWindow = null;#}
+        }
+        if (!(currentInfoWindow === infowindow)) {
+              currentInfoWindow = null;
+              infowindow.open(map,marker);
+              infowindow.opened = true;
+              currentInfoWindow = infowindow;
+        }
+        else {
+            currentInfoWindow = null;
+            infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+              google.maps.event.addListener(infowindow,'domready',function() {
+{#      if (!saveButton) {#}
+           var saveButton = document.createElement('button');
+           saveButton.id = 'saveButton';
+           saveButton.innerHTML = "Save tree";
+{#      }#}
+   {#    myDiv.style.height#}
+
+    function send_json(){
+        console.log("send json called");
+        var jsontree = JSON.stringify(tree);
+        //JQUERY AJAX STUFF
+         $.ajax({
+             url: "addTreeToTreeList/", // the endpoint
+             type: "POST",
+             data: jsontree
+         });
+    }
+    console.log("SETTING CLICK LISTENER");
+    saveButton.onclick = function(){
+        console.log("save button clicked");
+        // call handler for button submit
+        send_json();
+    }
+
+    var parentNode = document.getElementById('content');
+    if (!parentNode.contains(saveButton)) {
+        console.log("PASS");
+       parentNode.appendChild(saveButton);
+    }
+  });
+        }
   });
     }
 
@@ -267,12 +336,15 @@ var saveButton;
 
       function markTrees() {
           var treesListJson = '{{ Trees|safe }}';
+          var treeUserMappingsJson = '{{ treeUserMappings|safe }}';
           var allTrees = JSON.parse(treesListJson);
+          var treeUserMappings = JSON.parse(treeUserMappingsJson);
             for (i=0; i<allTrees.length; i++) {
               console.log("CREATING MARKER");
               var tree = allTrees[i].fields;
               tree.ID = allTrees[i].pk;
-              initializeTree(tree);
+                var test = tree.ID;
+              initializeTree(tree, treeUserMappings[tree.ID.toString()]);
             }
       }
 
@@ -351,7 +423,7 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-        markTrees(map);
+{#        markTrees(map);#}
     </script>
     <style>
       #target {
